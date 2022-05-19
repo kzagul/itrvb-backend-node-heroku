@@ -27,12 +27,6 @@ db.sequelize.sync();
 // db.sequelize.sync({ force: true }).then(() => {
 //   console.log("Drop and re-sync db.");
 // });
-const client = new Client({
-  connectionString: process.env.DB_HOST,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
 
 
 const db2 = require('./app/DBconnection')
