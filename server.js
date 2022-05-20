@@ -4,10 +4,10 @@ const cors = require("cors");
 
 const app = express();
 
-var corsOptions = {
-  // origin: "http://localhost:8083"
-  origin:  "https://kzagul-itrvb-frontend.herokuapp.com"
-};
+// var corsOptions = {
+//   // origin: "http://localhost:8083"
+//   origin:  "https://kzagul-itrvb-frontend.herokuapp.com"
+// };
 
 app.use(cors(corsOptions));
 
