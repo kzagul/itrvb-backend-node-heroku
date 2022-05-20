@@ -11,12 +11,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
   },
-  dialectOptions: {
+
     ssl: {      /* <----- Add SSL option */
       require: true,
       rejectUnauthorized: false 
     }
-  },
 });
 
 const db = {};
