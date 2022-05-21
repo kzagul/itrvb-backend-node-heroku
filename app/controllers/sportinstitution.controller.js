@@ -99,6 +99,63 @@ class SportInstitutionController {
     }
 
 
+    async getAllFullById(req, res, next) {
+        try {
+            const id = req.params.id
+            let sql = `SELECT
+                            
+                            sportinstitution.id,
+                            sportinstitution.name,
+                            sportinstitution.classificationnumber,
+                            sportinstitution.about,
+
+
+                            locate.address,
+                            locate.area,
+
+                            director.fullname,
+
+
+                            contacts.website,
+                            contacts.phonenumber,
+                            contacts.vk,
+                            contacts.inst
+
+                            
+                        FROM 
+                            sportinstitution 
+
+
+                        
+                        JOIN 
+                            locate 
+                        ON 
+                            sportinstitution.fk_location_id = locate.id
+
+
+                        JOIN 
+                            director 
+                        ON 
+                            sportinstitution.fk_director_id = director.id
+
+                    
+                        JOIN 
+                            contacts 
+                        ON 
+                            sportinstitution.fk_contacts_id = contacts.id;
+                            
+                        WHERE sportinstitution.id = $1`
+
+            let result = await db.query(sql, [id])
+            res.json(result.rows)
+        }
+        catch (error){
+            console.error(error)
+            next(error)
+        }
+    }
+
+
 
 
 
