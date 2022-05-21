@@ -125,6 +125,7 @@ class SportInstitutionController {
                         FROM 
                             sportinstitution 
 
+                        WHERE sportinstitution.id = $1
 
                         
                         JOIN 
@@ -144,7 +145,7 @@ class SportInstitutionController {
                         ON 
                             sportinstitution.fk_contacts_id = contacts.id;
                             
-                        WHERE sportinstitution.id = $1`
+                       `
 
             let result = await db.query(sql, [id])
             res.json(result.rows)
