@@ -59,8 +59,8 @@ class SportInstitutionController {
     //API POST new sport institution
     async postSportInstitution(req, res, next){
         try{
-            const {name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id} = req.body
-            const result = await db.query(`INSERT INTO sportinstitution (name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id) values($1, $2, $3, $4, $5) RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id])
+            const {name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about} = req.body
+            const result = await db.query(`INSERT INTO sportinstitution (name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about) values($1, $2, $3, $4, $5, $6) RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about])
             res.json(result.rows[0])
         }
         catch (error){
@@ -71,9 +71,9 @@ class SportInstitutionController {
     //API PUT sport institution
     async putSportInstitution(req, res, next){
         try{
-            const {name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id} = req.body
+            const {name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about} = req.body
             const id = req.params.id
-            const result = await db.query(`UPDATE sportinstitution SET name = $1, classificationnumber = $2, fk_location_id = $3, fk_director_id = $4, fk_contacts_id = $5 WHERE id = $6 RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id])
+            const result = await db.query(`UPDATE sportinstitution SET name = $1, classificationnumber = $2, fk_location_id = $3, fk_director_id = $4, fk_contacts_id = $5, about = $6 WHERE id = $6 RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about, id])
             res.json(result.rows)
         }
         catch (error){
