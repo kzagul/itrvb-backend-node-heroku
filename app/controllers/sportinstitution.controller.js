@@ -190,7 +190,7 @@ class SportInstitutionController {
         try{
             const {name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about} = req.body
             const id = req.params.id
-            const result = await db.query(`UPDATE sportinstitution SET name = $1, classificationnumber = $2, fk_location_id = $3, fk_director_id = $4, fk_contacts_id = $5, about = $6 WHERE id = $6 RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about, id])
+            const result = await db.query(`UPDATE sportinstitution SET name = $1, classificationnumber = $2, fk_location_id = $3, fk_director_id = $4, fk_contacts_id = $5, about = $6 WHERE id = $7 RETURNING *`, [name, classificationnumber, fk_location_id, fk_director_id, fk_contacts_id, about, id])
             res.json(result.rows)
         }
         catch (error){
