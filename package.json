@@ -1,5 +1,5 @@
 {
-  "name": "vue-nodejs-express-sequelize-postgresql",
+  "name": "backend-nodejs-express-sequelize-postgresql",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,12 +8,7 @@
     "start": "node server.js"
   },
   "keywords": [
-    "nodejs",
-    "express",
-    "sequelize",
-    "rest",
-    "api",
-    "postgresql"
+    "nodejs"
   ],
   "author": "kzagul",
   "license": "ISC",

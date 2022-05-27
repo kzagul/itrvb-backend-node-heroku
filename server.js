@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser"); /* deprecated */
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
@@ -9,13 +9,10 @@ var corsOptions = {
   origin:  "https://kzagul-itrvb-frontend.herokuapp.com"
 };
 
+app.use(cors())
 app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
-app.use(express.json());  /* bodyParser.json() is deprecated */
-
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));   /* bodyParser.urlencoded() is deprecated */
+app.use(express.json());  
+app.use(express.urlencoded({ extended: true }));  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -23,11 +20,6 @@ const db = require("./app/models");
 const Role = db.role;
 
 db.sequelize.sync();
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
-// });
-
 
 const db2 = require('./app/DBconnection')
 
@@ -38,11 +30,6 @@ const contactsRouter = require('./app/routes/contacts.routes')
 const trainerRouter = require('./app/routes/trainer.routes')
 const sportObjectRouter = require('./app/routes/sportobject.routes')
 const sportInstitutionRouter = require('./app/routes/sportinstitution.routes')
-
-
-//url links
-app.use(cors())
-app.use(express.json())
 
 app.use('/api', directorRouter)
 app.use('/api', locateRouter)
@@ -56,9 +43,9 @@ app.use('/api', sportInstitutionRouter)
 
 
 
-// simple route
+
 app.get("/", (req, res) => {
-  res.json({ message: "SPORT node.js application by K.Zagul" });
+  res.json({ message: "SPORT node.js application" });
 });
 
 // routes
